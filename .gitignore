@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Build output
+release/
+
+# Local Claude Code session/runtime data (not part of the app)
+.claude/
+
+# OS junk
+Thumbs.db
+.DS_Store
+
+# Editor
+.vscode/
+*.swp
+
+# Custom app icon is a local asset each builder supplies themselves
+build/*.ico
+build/*.icns
+build/*.png

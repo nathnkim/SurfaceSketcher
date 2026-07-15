@@ -1,0 +1,40 @@
+{
+  "name": "surface-sketcher",
+  "version": "1.0.0",
+  "description": "Lightweight Windows 11 pen-first sketching app for Surface devices",
+  "main": "main/main.js",
+  "author": "",
+  "license": "GPL-3.0",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.local.surfacesketcher",
+    "productName": "Surface Sketcher",
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "asar": true,
+    "compression": "maximum",
+    "files": [
+      "main/**/*",
+      "renderer/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    }
+  }
+}

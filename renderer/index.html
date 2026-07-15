@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;" />
+<title>Surface Sketcher</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-title">Files</span>
+        <button id="chooseWorkspaceBtn" title="Open workspace folder">📁</button>
+      </div>
+      <div id="fileTree" class="file-tree"></div>
+      <div class="sidebar-footer">
+        <button id="newFileBtn" title="New sketch">＋ File</button>
+        <button id="newFolderBtn" title="New folder">＋ Folder</button>
+      </div>
+    </aside>
+
+    <main id="canvasArea">
+      <canvas id="drawCanvas"></canvas>
+
+      <div id="topBar">
+        <div class="doc-name">
+          <span id="docName">No file open</span>
+          <span id="unsavedDot" class="unsaved-dot" title="Unsaved changes"></span>
+          <span id="saveStatus" class="save-status"></span>
+        </div>
+        <div class="top-actions">
+          <button id="undoBtn" title="Undo (Ctrl+Z)">↶</button>
+          <button id="redoBtn" title="Redo (Ctrl+Y)">↷</button>
+          <button id="saveBtn" title="Save (Ctrl+S)">💾 Save</button>
+          <button id="gridToggleBtn" title="Toggle dot grid">▦</button>
+          <button id="exportPngBtn" title="Export PNG">PNG</button>
+          <button id="exportSvgBtn" title="Export SVG">SVG</button>
+          <button id="settingsBtn" title="Settings">⚙</button>
+        </div>
+      </div>
+
+      <div id="palette">
+        <button class="swatch" data-index="0"></button>
+        <button class="swatch" data-index="1"></button>
+        <button class="swatch" data-index="2"></button>
+        <button class="swatch" data-index="3"></button>
+        <button class="swatch" data-index="4"></button>
+      </div>
+
+      <div id="zoomIndicator">100%</div>
+    </main>
+
+    <div id="settingsPanel" class="modal hidden">
+      <div class="modal-box">
+        <h3>Settings</h3>
+        <label>
+          Export margin (px)
+          <input type="number" id="marginInput" min="0" max="500" step="4" />
+        </label>
+        <label>
+          Base stroke width
+          <input type="number" id="baseWidthInput" min="1" max="40" step="1" />
+        </label>
+        <label>
+          Pressure sensitivity (0 = off, 1 = normal, 2 = exaggerated)
+          <input type="range" id="pressureSensitivityInput" min="0" max="2" step="0.1" />
+        </label>
+        <div class="modal-actions">
+          <button id="closeSettingsBtn">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="dialog.js"></script>
+  <script src="engine.js"></script>
+  <script src="filetree.js"></script>
+  <script src="export.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
